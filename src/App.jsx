@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from './navbar';
+import Navbar from './Navbar';
 import './App.css'; // Assuming you have some global styles
 import Hero from './Hero';
 import About from './About';
