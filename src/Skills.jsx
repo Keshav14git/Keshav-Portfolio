@@ -66,7 +66,7 @@ const Skills = () => {
             letterSpacing: '-0.02em',
           }}
         >
-          SKILLS
+          Skills
         </h2>
 
         {/* Skills Layout */}
