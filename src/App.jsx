@@ -7,7 +7,7 @@ import Skills from './Skills';
 import Projects from './Projects';
 import Certificates from './Certificates';
 import Contact from './Contact';
-import Footer from './footer';
+import Footer from './Footer';
 
 function App() {
   return (
