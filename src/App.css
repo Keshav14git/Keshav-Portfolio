@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Cosmic background with gradient and subtle stars */
+body {
+  background: linear-gradient(135deg, #000102 0%, #000000 100%);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  color: #e2e8f0; 
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000; 
+  border-radius: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+
+  background: linear-gradient(180deg, #232222, #000000);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
