@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import emailjs from 'emailjs-com';
+import emailjs from '@emailjs/browser';
 import emailLogo from './assets/email.png';
 import linkedinLogo from './assets/linkedin.png';
 
