@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
-import javaImage from './assets/java.png'; // Adjust path based on your project structure
-import psBasicImage from './assets/PS-basic.png'; // Adjust path based on your project structure
-import psInterImage from './assets/PS-Inter.png'; // Adjust path based on your project structure
+import javaImage from './assets/java.png'; 
+import psBasicImage from './assets/PS-basic.png'; 
+import psInterImage from './assets/PS-Inter.png'; 
 
 const Certificates = () => {
   const certificatesRef = useRef(null);
