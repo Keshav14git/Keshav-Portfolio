@@ -11,13 +11,26 @@ const Projects = () => {
   const projects = [
     {
       title: 'TALK - Real-Time Chat Application',
-      description: 'A real-time messaging app built with MERN stack and Socket.io. Features JWT authentication, Zustand state management, and TailwindCSS for responsive UI.',
+      details: [
+        'Developed a real-time messaging application using MERN stack and Socket.io',
+        'Integrated JWT for secure authentication and Zustand for state management',
+        'Applied TailwindCSS for responsive UI design',
+        'Enabled scalable two-way communication between users',
+      ],
       status: 'Will be deployed soon',
+      images: '#images-talk', // Placeholder for images link
     },
     {
       title: 'ASSESSIQ - Remote Interview Platform',
-      description: 'A web-based coding interview tool using Next.js and TypeScript. Includes Clerk authentication, Convex database, Stream video conferencing, and Monaco Editor for real-time code collaboration.',
-      link: '#',
+      details: [
+        'Built a web-based coding interview tool using Next.js and TypeScript',
+        'Implemented Clerk for user authentication and Convex for database management',
+        'Integrated Stream for video conferencing within the coding environment',
+        'Embedded Monaco Editor to allow real-time code collaboration',
+        'Supported multilingual coding with a clean, single-window interface',
+      ],
+      link: '#', // Placeholder link from resume
+      images: '#images-assessiq', // Placeholder for images link
     },
   ];
 
@@ -114,9 +127,10 @@ const Projects = () => {
             {projects.map((project, index) => (
               <div
                 key={index}
-                className="project-card group relative p-4 sm:p-6 rounded-none bg-transparent border border-white/10 transition-all duration-400"
+                className="project-card group relative p-4 sm:p-6 rounded-none bg-black/30 border border-white/10 transition-all duration-400 backdrop-blur-sm"
                 style={{
                   boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.05)',
+                  backdropFilter: 'blur(8px)',
                 }}
                 onMouseEnter={() => handleCardHover(true, index)}
                 onMouseLeave={() => handleCardHover(false, index)}
@@ -125,18 +139,31 @@ const Projects = () => {
                 <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-5 transition-opacity duration-500" />
 
                 <h3 className="text-lg sm:text-xl font-light text-white/90 mb-2 sm:mb-3 tracking-wide">{project.title}</h3>
-                <p className="text-sm sm:text-base text-white/50 mb-3 sm:mb-4 font-light leading-relaxed">{project.description}</p>
-                {project.link ? (
+                <ul className="text-sm sm:text-base text-white/50 mb-3 sm:mb-4 font-light leading-relaxed list-disc list-inside">
+                  {project.details.map((detail, idx) => (
+                    <li key={idx}>{detail}</li>
+                  ))}
+                </ul>
+                <div className="flex flex-col sm:flex-row sm:gap-4">
+                  {project.link ? (
+                    <a
+                      href={project.link}
+                      className="relative text-white/70 group-hover:text-white text-xs sm:text-sm font-light tracking-[0.15em] uppercase transition-colors duration-300 cursor-none mb-2 sm:mb-0"
+                    >
+                      View Project
+                      <span className="absolute bottom-0 left-0 w-0 h-px bg-white/50 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                  ) : (
+                    <span className="text-white/40 text-xs sm:text-sm font-light tracking-[0.15em] uppercase mb-2 sm:mb-0">{project.status}</span>
+                  )}
                   <a
-                    href={project.link}
+                    href={project.images}
                     className="relative text-white/70 group-hover:text-white text-xs sm:text-sm font-light tracking-[0.15em] uppercase transition-colors duration-300 cursor-none"
                   >
-                    View Project
+                    View Images
                     <span className="absolute bottom-0 left-0 w-0 h-px bg-white/50 group-hover:w-full transition-all duration-300"></span>
                   </a>
-                ) : (
-                  <span className="text-white/40 text-xs sm:text-sm font-light tracking-[0.15em] uppercase">{project.status}</span>
-                )}
+                </div>
               </div>
             ))}
           </div>
