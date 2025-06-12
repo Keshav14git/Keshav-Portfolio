@@ -60,7 +60,7 @@ const Skills = () => {
       {/* Content */}
       <div className="relative z-10 text-center px-8 max-w-6xl mx-auto">
         <h2
-          className="text-6xl md:text-8xl font-extralight text-white mb-16 tracking-tight leading-none"
+          className="text-4xl md:text-6xl font-extralight text-white mb-16 tracking-tight leading-none"
           style={{
             fontFamily: 'system-ui, -apple-system, sans-serif',
             letterSpacing: '-0.02em',
