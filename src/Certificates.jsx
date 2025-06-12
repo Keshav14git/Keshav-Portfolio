@@ -193,7 +193,7 @@ const Certificates = () => {
                   <p className="text-base md:text-lg text-white/70">{cert.description}</p>
                   <button
                     onClick={() => handleViewImage(cert.image)}
-                    className="mt-4 bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-full transition duration-300"
+                    className="mt-4 bg-black/30 hover:bg-white/20 text-white px-4 py-2 rounded-full transition duration-300"
                     style={{ backdropFilter: 'blur(5px)' }}
                   >
                     View Certificate
