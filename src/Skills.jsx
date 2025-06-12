@@ -99,78 +99,85 @@ const Skills = () => {
           SKILLS
         </h2>
 
-        {/* Radial Layout */}
+        {/* Radial Layout or Selected Category Display */}
         <div className="relative flex items-center justify-center">
-          {/* Central Node (Tools) */}
-          <div
-            className="skill-node flex items-center justify-center w-32 h-32 rounded-full bg-white/10 border border-white/20 shadow-lg"
-            style={{ position: 'relative' }}
-          >
-            <span className="text-white text-lg font-light">Tools</span>
-          </div>
-
-          {/* Categories */}
-          {Object.keys(skills).map((category, index) => {
-            if (category === 'Tools') return null;
-
-            // Position categories around the central node
-            const angle = (index * 90) * (Math.PI / 180); // 90-degree intervals
-            const radius = 200; // Distance from center
-            const x = radius * Math.cos(angle);
-            const y = radius * Math.sin(angle);
-
-            return (
+          {selectedCategory ? (
+            // Display only the selected category and its skills
+            <div className="animate-fadeIn text-center">
               <div
-                key={category}
-                className="absolute skill-title cursor-pointer"
-                style={{
-                  transform: `translate(${x}px, ${y}px)`,
-                  transition: 'all 0.3s ease',
-                }}
-                onClick={() => handleCategoryClick(category)}
+                className="skill-node cursor-pointer flex items-center justify-center w-32 h-32 rounded-full bg-white/10 border border-white/20 shadow-lg mb-8"
+                onClick={() => handleCategoryClick(selectedCategory)}
               >
-                <span
-                  className={`text-lg md:text-xl font-light uppercase tracking-[0.2em] ${
-                    selectedCategory === category ? 'text-white' : 'text-white/40'
-                  } hover:text-white transition-colors duration-300`}
-                >
-                  {category}
-                </span>
-                {/* Arrow pointing to center */}
-                <div
-                  className="absolute w-32 h-px bg-white/40"
-                  style={{
-                    transform: `rotate(${-index * 90}deg) translateX(-50%)`,
-                    transformOrigin: 'left',
-                    left: '50%',
-                    top: '50%',
-                  }}
-                >
-                  <div
-                    className="absolute w-0 h-0 border-t-[5px] border-t-transparent border-b-[5px] border-b-transparent border-l-[10px] border-l-white/40"
-                    style={{ left: '100%' }}
-                  />
-                </div>
+                <span className="text-white text-lg font-light">{selectedCategory}</span>
               </div>
-            );
-          })}
-        </div>
+              <ul className="flex flex-wrap justify-center gap-4">
+                {skills[selectedCategory].map((item) => (
+                  <li
+                    key={item}
+                    className="px-4 py-2 bg-white/5 border border-white/10 rounded-md text-gray-300 text-sm md:text-base"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : (
+            // Display the radial layout with all categories
+            <>
+              {/* Central Node (Tools) */}
+              <div
+                className="skill-node flex items-center justify-center w-32 h-32 rounded-full bg-white/10 border border-white/20 shadow-lg"
+                style={{ position: 'relative' }}
+              >
+                <span className="text-white text-lg font-light">Tools</span>
+              </div>
 
-        {/* Display Selected Category Skills */}
-        {selectedCategory && (
-          <div className="mt-12 animate-fadeIn">
-            <ul className="flex flex-wrap justify-center gap-4">
-              {skills[selectedCategory].map((item) => (
-                <li
-                  key={item}
-                  className="px-4 py-2 bg-white/5 border border-white/10 rounded-md text-gray-300 text-sm md:text-base"
-                >
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+              {/* Categories */}
+              {Object.keys(skills).map((category, index) => {
+                if (category === 'Tools') return null;
+
+                // Position categories around the central node
+                const angle = (index * 90) * (Math.PI / 180); // 90-degree intervals
+                const radius = 200; // Distance from center
+                const x = radius * Math.cos(angle);
+                const y = radius * Math.sin(angle);
+
+                return (
+                  <div
+                    key={category}
+                    className="absolute skill-title cursor-pointer"
+                    style={{
+                      transform: `translate(${x}px, ${y}px)`,
+                      transition: 'all 0.3s ease',
+                    }}
+                    onClick={() => handleCategoryClick(category)}
+                  >
+                    <span
+                      className="text-lg md:text-xl font-light uppercase tracking-[0.2em] text-white/40 hover:text-white transition-colors duration-300"
+                    >
+                      {category}
+                    </span>
+                    {/* Arrow pointing to center */}
+                    <div
+                      className="absolute w-32 h-px bg-white/40"
+                      style={{
+                        transform: `rotate(${-index * 90}deg) translateX(-50%)`,
+                        transformOrigin: 'left',
+                        left: '50%',
+                        top: '50%',
+                      }}
+                    >
+                      <div
+                        className="absolute w-0 h-0 border-t-[5px] border-t-transparent border-b-[5px] border-b-transparent border-l-[10px] border-l-white/40"
+                        style={{ left: '100%' }}
+                      />
+                    </div>
+                  </div>
+                );
+              })}
+            </>
+          )}
+        </div>
       </div>
 
       {/* Corner Accents */}
