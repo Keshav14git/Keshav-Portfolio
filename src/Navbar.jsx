@@ -148,7 +148,7 @@ const Navbar = () => {
           {/* Logo */}
           <div
             ref={logoRef}
-            className="flex items-center space-x-3 cursor-none"
+            className="flex items-center space-x-2 cursor-none"
           >
             <img
               src="/K(2).png"
