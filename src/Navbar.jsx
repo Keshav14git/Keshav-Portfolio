@@ -35,7 +35,7 @@ const MenuButton = ({ isOpen, toggleMenu }) => {
   return (
     <button
       onClick={handleClick}
-      className="relative w-8 h-8 bg-transparent focus:outline-none md:hidden"
+      className="relative w-8 h-8 bg-transparent focus:outline-none md:hidden cursor-none hover:cursor-none"
       aria-label={isOpen ? 'Close menu' : 'Open menu'}
     >
       {particles.map((particle) => (
