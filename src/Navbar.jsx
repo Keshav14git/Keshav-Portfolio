@@ -140,7 +140,7 @@ const Navbar = () => {
     <nav
       ref={navRef}
       className={`fixed top-0 w-full z-50 cursor-none transition-all duration-500 ${
-        scrolled ? 'bg-black/90 backdrop-blur-md border-b border-white/10' : 'bg-transparent'
+        scrolled ? 'bg-black/90 backdrop-blur-md border-b border-white/10' : 'bg-black'
       }`}
     >
       <div className="max-w-7xl mx-auto px-8">
