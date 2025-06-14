@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import CustomCursor from './CustomCursor'; // Assuming CustomCursor is available
+import CustomCursor from './CustomCursor';
+import './Projects.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -18,7 +19,7 @@ const Projects = () => {
         'Enabled scalable two-way communication between users',
       ],
       status: 'Will be deployed soon',
-      images: '#images-talk', // Placeholder for images link
+      images: '#images-talk',
     },
     {
       title: 'ASSESSIQ - Remote Interview Platform',
@@ -29,13 +30,20 @@ const Projects = () => {
         'Embedded Monaco Editor to allow real-time code collaboration',
         'Supported multilingual coding with a clean, single-window interface',
       ],
-      link: '#', // Placeholder link from resume
-      images: '#images-assessiq', // Placeholder for images link
+      link: '#',
+      images: [
+        '1.png',
+        '2.png',
+        '3.png',
+        '4.png',
+        '5.png',
+        '6.png',
+        '7.png',
+      ],
     },
   ];
 
   useEffect(() => {
-    // Animations for project cards
     gsap.fromTo(
       '.project-card',
       { opacity: 0, y: 30 },
@@ -49,7 +57,6 @@ const Projects = () => {
       }
     );
 
-    // Animate section title
     gsap.fromTo(
       '.section-title',
       { opacity: 0, y: 20 },
@@ -92,7 +99,6 @@ const Projects = () => {
           background: 'radial-gradient(circle at center, #0a0a0a 0%, #000000 100%)',
         }}
       >
-        {/* Minimal Grid Background */}
         <div
           className="absolute inset-0 pointer-events-none z-0"
           style={{
@@ -103,16 +109,12 @@ const Projects = () => {
             backgroundSize: '60px 60px',
           }}
         />
-
-        {/* Ambient Light Effect */}
         <div
           className="absolute inset-0 opacity-20 pointer-events-none"
           style={{
             background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(120, 119, 198, 0.08), transparent 60%)`,
           }}
         />
-
-        {/* Content Container */}
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <h2
             className="section-title text-4xl sm:text-5xl md:text-6xl font-extralight text-white/90 mb-10 md:mb-16 text-center tracking-tight"
@@ -127,7 +129,9 @@ const Projects = () => {
             {projects.map((project, index) => (
               <div
                 key={index}
-                className="project-card group relative p-4 sm:p-6 rounded-none bg-black/30 border border-white/10 transition-all duration-400 backdrop-blur-sm"
+                className={`project-card group relative p-4 sm:p-6 rounded-none bg-black/30 border border-white/10 transition-all duration-400 backdrop-blur-sm ${
+                  project.title.includes('ASSESSIQ') ? 'assessiq-container' : ''
+                }`}
                 style={{
                   boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.05)',
                   backdropFilter: 'blur(8px)',
@@ -135,15 +139,25 @@ const Projects = () => {
                 onMouseEnter={() => handleCardHover(true, index)}
                 onMouseLeave={() => handleCardHover(false, index)}
               >
-                {/* Card Background Effect */}
                 <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-5 transition-opacity duration-500" />
-
                 <h3 className="text-lg sm:text-xl font-light text-white/90 mb-2 sm:mb-3 tracking-wide">{project.title}</h3>
                 <ul className="text-sm sm:text-base text-white/50 mb-3 sm:mb-4 font-light leading-relaxed list-disc list-inside">
                   {project.details.map((detail, idx) => (
                     <li key={idx}>{detail}</li>
                   ))}
                 </ul>
+                {project.title.includes('ASSESSIQ') && (
+                  <div className="image-gallery">
+                    {project.images.map((image, idx) => (
+                      <img
+                        key={idx}
+                        src={image}
+                        alt={`AssessorIQ Screenshot ${idx + 1}`}
+                        className="project-image"
+                      />
+                    ))}
+                  </div>
+                )}
                 <div className="flex flex-col sm:flex-row sm:gap-4">
                   {project.link ? (
                     <a
@@ -156,20 +170,20 @@ const Projects = () => {
                   ) : (
                     <span className="text-white/40 text-xs sm:text-sm font-light tracking-[0.15em] uppercase mb-2 sm:mb-0">{project.status}</span>
                   )}
-                  <a
-                    href={project.images}
-                    className="relative text-white/70 group-hover:text-white text-xs sm:text-sm font-light tracking-[0.15em] uppercase transition-colors duration-300 cursor-none"
-                  >
-                    View Images
-                    <span className="absolute bottom-0 left-0 w-0 h-px bg-white/50 group-hover:w-full transition-all duration-300"></span>
-                  </a>
+                  {typeof project.images === 'string' && (
+                    <a
+                      href={project.images}
+                      className="relative text-white/70 group-hover:text-white text-xs sm:text-sm font-light tracking-[0.15em] uppercase transition-colors duration-300 cursor-none"
+                    >
+                      View Images
+                      <span className="absolute bottom-0 left-0 w-0 h-px bg-white/50 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                  )}
                 </div>
               </div>
             ))}
           </div>
         </div>
-
-        {/* Corner Accents */}
         <div className="absolute top-4 sm:top-8 left-4 sm:left-8 w-6 sm:w-8 h-6 sm:h-8 border-l border-t border-white/10"></div>
         <div className="absolute top-4 sm:top-8 right-4 sm:right-8 w-6 sm:w-8 h-6 sm:h-8 border-r border-t border-white/10"></div>
         <div className="absolute bottom-4 sm:bottom-8 left-4 sm:left-8 w-6 sm:w-8 h-6 sm:h-8 border-l border-b border-white/10"></div>
